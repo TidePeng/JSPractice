@@ -1,0 +1,175 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style>
+	body{background-color:#eee;
+		 font-family:'微软雅黑';
+		}
+	label  {font-size:20px;
+			
+			line-height:36px;
+	}
+	input {width:37px;
+		   height:23px;
+			}
+	#set { background-color:red;
+			color:#fff;
+			height:30px;
+			width:80px;
+			line-height:30px;
+	}
+	#box1 {vertical-align:middle;}
+	#box2 {width:150px;
+		  height:100px;
+		  border:2px solid black;
+		  margin-top:15px;
+		  background-color:#fff;
+		  }
+	#wrapper {
+			width:100%;
+			height:100%;
+			background-color:#666;
+			position:absolute;
+			top:0;
+			left:0;
+			opacity:0.5;
+			filter:alpha(opacity=50);
+			display:none;
+		}
+	#box3 {
+			margin:auto;
+			border:20px solid rgba(153,153,153,1);
+			width:300px;
+			height:170px;
+			position:absolute;
+			top:50%;
+			left:50%;
+			margin-left:-150px;
+			margin-top:-100px;
+			background-color:#fff;
+			padding:15px;
+			display:none;
+		}
+	#color1 {
+			background-color:rgba(204,102,102,0.8);
+			margin-left:13px;
+			color:#fff;
+		}
+	#color2 {
+			background-color:rgba(255,153,0,0.8);
+			color:#fff;
+		}
+	#color3 {
+			background-color:rgba(102,153,204,0.8);
+			color:#fff;
+		}
+	.number:hover {background-color:rgba(255,153,0,1);
+			}
+	.line {margin-bottom:10px;}
+	#line2 {margin-top:30px;
+			margin-left:90px;
+			}
+	#undo,#confirm {
+			background-color:rgba(0,153,255,0.7);
+			width:50px;
+			height:25px;
+		}
+</style>
+</head>
+
+<body>
+	<div id="box1">
+    	<label>请对下面DIV设置样式：</label>
+        <input type="button" value="点击设置" id="set">
+    </div>
+    <div id="box2">
+    </div>
+    <div id="wrapper">
+    </div>
+    <div id="box3">
+        	<div class="line">
+            	<span>请选择背景色：</span>
+                <input type="button" value="红" id="color1">
+                <input type="button" value="黄" id="color2">
+                <input type="button" value="绿" id="color3">
+            </div>
+            <div class="line">
+            	<span>请选择高度(px)：</span>
+                <input type="button" value="200" class="number" id="h200">
+                <input type="button" value="300" class="number" id="h300">
+                <input type="button" value="400" class="number" id="h400">
+
+            </div>
+            <div class="line">
+            	<span>请选择高度(px)：</span>
+                <input type="button" value="200" class="number" id="w200">
+                <input type="button" value="300" class="number" id="w300">
+                <input type="button" value="400" class="number" id="w400">
+            </div>
+            <div id="line2">
+            	<input type="button" value="恢复" id="undo">
+                <input type="button" value="确认" id="confirm">
+            </div>
+    </div>
+    <script language="javascript">
+		var box2 = document.getElementById('box2');
+    	var set = document.getElementById('set');
+		var wrapper = document.getElementById('wrapper');
+		var box3 = document.getElementById('box3');
+		var h200 = document.getElementById('h200');
+		var h300 = document.getElementById('h300');
+		var h400 = document.getElementById('h400');
+		var w200 = document.getElementById('w200');
+		var w300 = document.getElementById('w300');
+		var w400 = document.getElementById('w400');
+		var undo = document.getElementById('undo');
+		var con = document.getElementById('confirm');
+		var red = document.getElementById('color1');
+		var yellow = document.getElementById('color2');
+		var green = document.getElementById('color3');
+		set.onclick = function () {
+			wrapper.style.display = 'block';
+			box3.style.display = 'block';
+			}
+		h200.onclick = function () {
+			box2.style.height = '200px';
+			}
+		h300.onclick = function () {
+			box2.style.height = '300px';
+			}
+		h400.onclick = function () {
+			box2.style.height = '400px';
+			}
+		w200.onclick = function () {
+			box2.style.width = '200px';
+			}
+		w300.onclick = function () {
+			box2.style.width = '300px';
+			}
+		w400.onclick = function () {
+			box2.style.width = '400px';
+			}
+		undo.onclick = function () {
+			box2.style.width = '150px';
+			box2.style.height = '100px';
+			box2.style.background = '#fff';
+			}
+		con.onclick = function () {
+			wrapper.style.display = 'none';
+			box3.style.display = 'none';
+			}
+		red.onclick = function () {
+			box2.style.background = 'rgba(204,102,102,0.8)';
+			}
+		yellow.onclick = function () {
+			box2.style.background = 'rgba(255,153,0,0.8)';
+			}
+		green.onclick = function () {
+			box2.style.background = 'rgba(102,153,204,0.8)';
+			}
+	</script>
+    
+</body>
+</html>
