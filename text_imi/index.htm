@@ -1,0 +1,146 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style>
+	body{position:relative;
+		background-image:url(image/bg.png);
+		background-repeat:no-repeat;
+		background-position:50% 125px;
+		}
+	#wrapper {
+		width:240px;
+		height:425px;
+		border:3px solid #000;
+		position:relative;
+		font-family:"微软雅黑";
+		padding-top:7px;
+		padding-bottom:0px;
+		position:absolute;
+		top:200px;
+		left:50%;
+		margin-left:-120px;
+		
+		}
+	p {margin:0;
+		padding:0;
+		margin-left:3px;
+		margin-right:2px;
+		}
+	#img1 {
+		width:25px;
+		height:24px;
+		border-radius:3px;
+		border:1px solid #bbb;
+		position:absolute;
+		top:391px;
+		left:6px;
+		display:inline-block;
+		padding:3px;
+		z-index:1;
+		}
+	input{
+		width:142px;
+		height:26px;
+		margin-left:42px;
+		margin-top:6px;
+		}
+	#bott {
+		position:absolute;
+		top:381px;
+		padding:3px 2px;
+		border-top:1px solid #666;
+		height:44px;
+		width:236px;
+		vertical-align:baseline;
+		background-color:rgba(204,204,204,0.3);
+		}
+	#button{
+		font-size:18px;
+		color:#999;
+		margin-top:6px;
+		cursor:pointer;
+		}
+	.green {
+		background-color:rgba(0,204,102,0.8);
+		color:#fff;
+		float:left;
+		width:160px;
+		word-wrap:break-word;
+		/*max-width:140px;*/
+		}
+	.purple {background-color:rgba(204,153,204,0.8);
+			float:right;
+			width:160px;
+			word-wrap:break-word;
+		/*	max-width:140px;*/
+	}
+	.txt2{float:left;
+	margin-bottom:5px;
+			
+			}
+	.txt1{float:right;
+	margin-bottom:5px;
+			}
+	.txt {margin-bottom:5px;}
+</style>
+</head>
+
+<body>
+	<div id="wrapper">
+    	<div id="content">
+        </div>
+    	<div id="img1">
+            	<img src="image/1.png" id="Img">
+    	</div>
+    	<div id="bott">
+        	<input id="text" type="text">
+            <span id="button">发送</span>
+        </div>
+    </div>
+    <script>
+		var oDiv = document.getElementById('img1');
+    	var oImg = document.getElementById('Img');
+		var onOff = true;
+		var oButton = document.getElementById('button');
+		var oText = document.getElementById('text');
+		var content = document.getElementById('content');
+		
+		 
+		
+		oImg.onclick = function() {
+			if(onOff) {
+				oImg.src = 'image/2.png';
+				onOff = false ;
+				}
+			else {
+				oImg.src = 'image/1.png';
+				onOff = true ;
+				}
+			};
+		oButton.onclick = function() {
+			if (oText.value =="") {
+				alert("至少写点啥吧~~~");
+				return false;
+				}
+			else {
+			if (onOff) {
+			
+			content.innerHTML += "<div class=\"txt1\">" + oDiv.innerHTML+ "<p class=\"green\">" + '说: '  + oText.value + "</p>" +"</div>"  ;
+			oText.value = '';
+				}
+			else {
+				content.innerHTML += "<div class=\"txt2\">" + oDiv.innerHTML +"<p class=\"purple\">"  + '说: ' + oText.value + "</p>"+ "</div>"  ;
+			oText.value = '';
+				}
+			}
+		}
+		
+     </script>
+     
+     
+     /*          短信模拟      */
+</body>
+</html>
+    
