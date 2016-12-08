@@ -1,0 +1,172 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>图片切换</title>
+<style>
+	 
+	*{margin:0;
+	  padding:0;
+	  text-decoration:none;
+	  list-style:none;}
+	body{
+		position:relative;
+		font-family:"微软雅黑";
+		color:#FFF;
+		}
+	#container{
+		width:437px;
+		height:504px;
+		position:relative;
+		position:absolute;
+		top:50%;
+		left:50%; 
+		margin-left:-218px;
+		margin-top:252px; 
+		
+		}
+	#change	{
+		position:absolute;
+		top:0px;
+		left:50%;
+		margin-left:-60px;
+		margin-top:-40px;
+		}
+	#wrapper {
+		background-image:url(image/1.jpg);
+		background-repeat:no-repeat;
+		background-size:410px 410px;
+		width:410px;
+		height:410px;
+		border:solid 10px rgba(153,153,153,0.8);
+		
+		}
+	input {padding:2px 4px;}
+	#prev,#next {
+		width:40px;
+		height:40px;
+		background-color:rgba(204,204,204,0.5);
+		position:absolute;
+		cursor:pointer;
+		font-size:35px;
+		text-align:center;
+		line-height:40px;
+		}
+	#prev{	top:50%;
+			left:40px;
+			margin-top:-50px;
+			}
+	#next{	top:50%;
+			right:40px;
+			margin-top:-50px;}
+	#page {
+			height:30px;
+			background-color:rgba(51,51,51,0.6);
+			text-align:center;
+		}
+	#title {
+			height:30px;
+			background-color:rgba(51,51,51,0.6);
+			text-align:center;
+			margin-top:350px;	
+		}
+</style>
+</head>
+
+<body>
+<div id="container">
+    	<div id="change">
+        	<input type="button" id="circle" value="循环切换"/>
+            <input type="button" id="order"  value="顺序切换"/>
+        </div>
+        <div id="para"></div>
+        <div id="wrapper">
+        	<div id="page"></div>
+            <div id="prev"><</div>
+            <div id="next">></div>
+            <div id="title"></div>
+        </div>
+    </div>
+   	<script>
+    	var circle = document.getElementById("circle");
+		var order = document.getElementById("order");
+		var para = document.getElementById("para");
+		var prev = document.getElementById("prev");
+		var next = document.getElementById("next");
+		var title = document.getElementById("title");
+		var page = document.getElementById("page");
+		var num = 0;
+		var arr = ["image/1.jpg","image/2.jpg","image/3.jpg","image/4.jpg"];
+		var arrT = ["人物1","人物2","人物3","人物4"];
+		var wrapper = document.getElementById("wrapper");
+		
+		function cUrl() {
+			wrapper.style.backgroundImage = "url(" + arr[num] + ")" ;
+			title.innerHTML = arrT[num];
+			page.innerHTML = num+1 + "/" +arr.length ;
+			}
+		
+		function b() { 
+		prev.onclick = function() {
+			if(num == 0){
+				alert("已经是第一张了，不能再点了");
+				return false ;
+				}
+			else {
+				num--;
+				cUrl();
+				}
+			}
+		next.onclick = function() {
+			if(num == arr.length-1){
+				alert("已经是最后一张了，不能再点了");
+				return false ;
+				}
+			else {
+				num++;
+				cUrl();
+				}
+			}
+		}
+		function a() {
+			prev.onclick = function () {
+				if(num == 0){
+					num = arr.length-1;
+					cUrl();
+					}else{
+						num--;
+						cUrl();
+						}
+				}
+			next.onclick = function() {
+				if(num == arr.length-1){
+					num = 0;
+					cUrl();
+					}else{
+						num++;
+						cUrl();
+						}
+				}
+				
+				
+				}
+			b();
+			circle.onclick = function(){
+				a();
+				}
+			order.onclick = function(){
+				b();
+				}
+			
+			
+			
+			
+			
+				
+		/* 心得：
+		1.变量或数组在引号内会被解析为字符串
+		2.直接在google输入源码会出现大量stackflow解答！！！！*/
+	</script>
+    
+</body>
+</html>
