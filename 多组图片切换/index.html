@@ -1,0 +1,145 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style>
+	* { 
+		margin:0;
+		padding:0;
+		list-style:none;
+	}
+	body {
+		position:relative;
+		font-family:"微软雅黑";
+		}
+	#wrapper {
+		width:873px;
+		height:551px;
+		background-image:url(image/bg.png);
+		position:relative;
+		position:absolute;
+		left:50%;
+		margin-left:-437px;
+		
+		}
+	#pic1 {
+		margin-left:50px;;
+		margin-top:113px;
+		margin-bottom:10px;
+		cursor:pointer;
+		}
+	#pic2 {
+		margin-left:60px;
+		margin-bottom:10px;
+		cursor:pointer;
+		}
+	input {
+		cursor:pointer;
+		position:absolute;
+		top:56px;
+		left:30px;
+		color: #fae7e9;  
+    	border: solid 1px #b73948;  
+   	 	background:rgba(204,102,0,1);  
+    	background: -webkit-gradient(linear, left top, left bottom, from(#f16c7c), to(#bf404f));  
+    	background: -moz-linear-gradient(top,  #f16c7c,  #bf404f);  
+    	filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#f16c7c', endColorstr='#bf404f');  
+		}
+	#next {
+		margin-left:55px;
+		}
+	#span1 {
+		margin-left:50px;
+		
+		}
+	#span2 {
+		margin-left:560px;	
+		}
+</style>
+</head>
+
+<body>
+	<div id="wrapper">
+    	<input type="button" value="上一组" id="prev"/>
+        <input type="button" value="下一组" id="next"/>
+    	
+    	<img alt="pic1" src="image/1_1.png" id="pic1">
+    	<img alt="pic2" src="image/2_1.png" id="pic2"><br />
+        <span id="span1">1/4</span>
+        <span id="span2">1/3</span>
+    <script>
+   		var prev = document.getElementById("prev");
+		var next = document.getElementById("next");
+		var oPic1 = document.getElementById("pic1");
+		var oPic2 = document.getElementById("pic2");
+		var oSpan1 = document.getElementById("span1");
+		var oSpan2 = document.getElementById("span2");
+		var aImg1 = ["image/1_1.png","image/1_2.png","image/1_3.png","image/1_4.png"];
+		var aImg2 = ["image/2_1.png","image/2_2.png","image/2_3.png"];
+		var num1 = 0;
+		var num2 = 0;
+		
+		function pic1Turn() {
+				oPic1.src = aImg1[num1];
+				oSpan1.innerHTML = num1+1 + "/" + aImg1.length;
+			}
+		function pic2Turn() {
+				oPic2.src = aImg2[num2];
+				oSpan2.innerHTML = num2+1 + "/" + aImg2.length;
+			}
+		function pic1Next () {
+				if(num1<aImg1.length-1) {
+				num1++;
+				pic1Turn();
+				}else{
+					num1 = 0;
+					pic1Turn();
+					}
+			}
+		function pic2Next() {
+				if(num2<aImg2.length-1) {
+				num2++;
+				pic2Turn();
+				}else{
+					num2 = 0;
+					pic2Turn();
+					}
+			}
+		function pic1Prev() {
+				if(num1 == 0){
+					num1 = 3;
+					pic1Turn();
+					}else{
+						num1--;
+						pic1Turn();
+						}
+			}
+		function pic2Prev() {
+				if(num2 == 0){
+					num2 = 2;
+					pic2Turn();
+					}else{
+						num2--;
+						pic2Turn();
+						}
+			}
+		oPic1.onclick = function() {
+				pic1Next ();
+			}
+		oPic2.onclick = function() {
+				pic2Next ();
+			}
+		next.onclick = function() {
+				pic1Next ();
+				pic2Next ();
+			}
+		prev.onclick = function(){
+				pic1Prev();
+				pic2Prev();
+			}
+		
+		//  代码的简化与重用~~~~~~~~~~~
+    </script>
+</body>
+</html>
